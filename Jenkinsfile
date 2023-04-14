@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('CodeAnalysis') {
             steps {
-                sh 'robocop Resources'
+                sh 'robocop'
             }
         }
     }
