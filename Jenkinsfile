@@ -5,7 +5,7 @@ pipeline {
         stage('CodeAnalysis') {
             steps {
                 sh 'pwd'
-                sh '~/home/jenkins/.local/bin/robocop'
+                sh '~/.local/bin/robocop'
             }
         }
     }
