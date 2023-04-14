@@ -45,7 +45,7 @@ pipeline {
             parallel {
                 stage('Analyze Files'){
                     steps{
-                        // sh '~/.local/bin/robocop'
+                         sh '~/.local/bin/robocop'
                         sh 'echo Test'
                     }
                 }
