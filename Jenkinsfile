@@ -12,8 +12,10 @@ pipeline {
                     sh 'ls -la'
                 }
                 sh 'echo Testing:${value}'
-                catchError{
+                try{
                     sh '~/.local/bin/robocop'
+                } catch (err) {
+                    echo "err"
                 }
             }
         }
