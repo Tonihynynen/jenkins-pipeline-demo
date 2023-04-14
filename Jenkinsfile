@@ -5,12 +5,11 @@ pipeline {
         stage('CodeAnalysis') {
             steps {
                 sh 'echo $PATH'
-                sh '~/.local/bin/robocop'
-                dir('${env.WORKSPACE}/Tests'){
+                dir('Tests'){
                     sh 'pwd'
                     sh 'ls -la'
+                    sh '~/.local/bin/robocop'
                 }
-                sh 'ls -la'
             }
         }
     }
