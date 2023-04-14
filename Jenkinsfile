@@ -23,4 +23,21 @@ pipeline {
             }
         }
     }
+    post {
+    always {
+      script {
+        step(
+          [
+            $class              : 'RobotPublisher',
+            outputPath          : 'Logs',
+            outputFileName      : 'output.xml',
+            reportFileName      : 'report.html',
+            logFileName         : 'log.html',
+            disableArchiveOutput: true,
+            otherFiles          : "*.png,*.jpg",
+          ]
+        )
+      }
+    }
+  }
 }
