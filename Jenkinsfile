@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Robot'){
             steps{
-                sh 'python3 -m robot -d Results Tests/example.robot'
+                sh 'python3 -m robot -d Results -v id:test Tests/example.robot'
             }
         }
     }
