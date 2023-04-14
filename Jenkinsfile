@@ -1,5 +1,14 @@
 pipeline {
     agent any
+    options{
+        timestamps()
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+        timeout(time: 1, unit: 'HOURS')
+    }
+    triggers{
+        cron('H 4 * * 1-5')
+        cron('H 3 * * 1-5')       
+    }
     environment {
         value = "random123"
     }
@@ -23,21 +32,4 @@ pipeline {
             }
         }
     }
-    post {
-    always {
-      script {
-        step(
-          [
-            $class              : 'RobotPublisher',
-            outputPath          : 'Logs',
-            outputFileName      : 'output.xml',
-            reportFileName      : 'report.html',
-            logFileName         : 'log.html',
-            disableArchiveOutput: true,
-            otherFiles          : "*.png,*.jpg",
-          ]
-        )
-      }
-    }
-  }
 }
