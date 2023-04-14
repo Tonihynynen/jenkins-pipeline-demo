@@ -24,9 +24,11 @@ pipeline {
                 sh 'echo Testing:${robot}'
             }
         }
-        stage('CheckFiles'){
+        stage('CheckFiles') {
+            steps {
             dir('Resources') {
                 fileExists 'text.txt'
+            }
             }
         }
         stage('Robot'){
