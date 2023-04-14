@@ -12,7 +12,9 @@ pipeline {
                     sh 'ls -la'
                 }
                 sh 'echo Testing:${value}'
-                sh '~/.local/bin/robocop'
+                catchError{
+                    sh '~/.local/bin/robocop'
+                }
             }
         }
         stage('Robot'){
