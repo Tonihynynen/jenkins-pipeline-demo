@@ -13,7 +13,7 @@ pipeline {
         string defaultValue: 'robot', description: 'robotti', name: 'robot'
     }
     triggers {
-        cron 'H/5 * * * *'
+        //cron 'H/5 * * * *'
     }
     stages {
         stage('CodeAnalysis') {
