@@ -55,8 +55,7 @@ pipeline {
                 }
             }
         }
-    }
-    post {
+        post {
         	always {
 		        script {
 		          step(
@@ -75,4 +74,5 @@ pipeline {
 		        }
 	  		}		
 	    }
+    }
 }
