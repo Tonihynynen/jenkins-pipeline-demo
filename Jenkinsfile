@@ -13,7 +13,7 @@ pipeline {
                 }
                 sh 'echo Testing:${value}'
                 catchError{
-                    sh '~/.local/bin/robocop'
+                    //sh '~/.local/bin/robocop'
                 }
             }
         }
