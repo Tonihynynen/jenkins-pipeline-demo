@@ -46,6 +46,7 @@ pipeline {
                 stage('Analyze Files'){
                     steps{
                         // sh '~/.local/bin/robocop'
+                        sh 'echo Test'
                     }
                 }
                 stage ('Code'){
