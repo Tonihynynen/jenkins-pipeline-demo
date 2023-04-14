@@ -51,6 +51,11 @@ pipeline {
                 }
                 stage ('Code'){
                     steps{
+                        script {
+                            if (name == "val"){
+                                sh 'python3 -m robot -d Results -v IDENTIFIER:${robot} Tests/example.robot'
+                            }
+                            }
                         sh 'python3 -m robot -d Results -v id:${robot} Tests/example.robot'
                     }
                 }
