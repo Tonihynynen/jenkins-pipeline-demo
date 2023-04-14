@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('CodeAnalysis') {
             steps {
-                sh 'pwd'
+                sh 'echo $PATH'
                 sh '~/.local/bin/robocop'
             }
         }
