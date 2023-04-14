@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh 'echo $PATH'
                 sh '~/.local/bin/robocop'
-                dir('Tests'){
+                dir('${env.WORKSPACE}/Tests'){
                     sh 'pwd'
                     sh 'ls -la'
                 }
