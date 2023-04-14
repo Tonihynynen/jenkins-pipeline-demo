@@ -41,5 +41,19 @@ pipeline {
                 sh 'python3 -m robot -d Results -v id:${name} Tests/example.robot'
             }
         }
+        stage ('CodeAnalyze And Run') {
+            parallel {
+                stage('Analyze Files'){
+                    steps{
+                        sh 'echo Step 1'
+                    }
+                }
+                stage ('Code'){
+                    steps{
+                        sh 'python3 -m robot -d Results -v id:${robot} Tests/example.robot'
+                    }
+                }
+            }
+        }
     }
 }
