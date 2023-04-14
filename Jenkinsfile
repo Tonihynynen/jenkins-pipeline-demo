@@ -8,8 +8,9 @@ pipeline {
                 dir('Tests'){
                     sh 'pwd'
                     sh 'ls -la'
-                    sh '~/.local/bin/robocop'
                 }
+                sh 'ls -la'
+                // sh '~/.local/bin/robocop'
             }
         }
     }
