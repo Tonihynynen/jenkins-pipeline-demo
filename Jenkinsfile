@@ -18,6 +18,7 @@ pipeline {
                 }
                 sh 'echo Testing:${value}'
                 catchError{
+                    sh 'echo ${val}'
                     //sh '~/.local/bin/robocop'
                 }
             }
