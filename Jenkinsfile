@@ -9,7 +9,8 @@ pipeline {
         value = "random123"
     }
     parameters {
-        string defaultValue: 'testing1', description: 'value1', name: 'name'
+        string defaultValue: 'tester', description: 'testaaja', name: 'name'
+        string defaultValue: 'robot', description: 'robotti', name: 'robot'
     }
     stages {
         stage('CodeAnalysis') {
@@ -17,6 +18,7 @@ pipeline {
                 dir('Tests'){
                 }
                 sh 'echo Testing:${params.name}'
+                sh 'echo Testing:${params.robot}'
             }
         }
         stage('Robot'){
