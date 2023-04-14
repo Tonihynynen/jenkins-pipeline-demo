@@ -16,12 +16,12 @@ pipeline {
             steps {
                 dir('Tests'){
                 }
-                sh 'echo Testing:${value}'
+                sh 'echo Testing:${name}'
             }
         }
         stage('Robot'){
             steps{
-                sh 'python3 -m robot -d Results -v id:${name} Tests/example.robot'
+                sh 'python3 -m robot -d Results -v id:$name Tests/example.robot'
             }
         }
     }
