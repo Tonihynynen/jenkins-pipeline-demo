@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Run Image') {
             steps{
-                sh 'docker run --rm e ALUSTA=${name} robotti'
+                sh 'docker run --rm -e ALUSTA=${name} robotti'
             }
         }
         stage('CheckFiles') {
