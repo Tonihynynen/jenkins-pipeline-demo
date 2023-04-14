@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('List files') {
+        stage('CodeAnalysis') {
             steps {
-                sh 'ls -la'
+                sh 'robocop Resources'
             }
         }
     }
