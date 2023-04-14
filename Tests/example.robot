@@ -11,3 +11,4 @@ Day
     Log To Console    ${id}
 From Jenkins Params
     Log    ${IDENTIFIER}
+    Fail
