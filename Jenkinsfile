@@ -22,6 +22,9 @@ pipeline {
                 }
                 sh 'echo Testing:${name}'
                 sh 'echo Testing:${robot}'
+                if (name == "val"){
+                    sh 'echo True'
+                }
             }
         }
         stage('CheckFiles') {
