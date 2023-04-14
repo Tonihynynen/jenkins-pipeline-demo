@@ -1,13 +1,9 @@
 pipeline {
     agent any
-    options{
+    options {
         timestamps()
         buildDiscarder(logRotator(numToKeepStr: '10'))
         timeout(time: 1, unit: 'HOURS')
-    }
-    triggers{
-        cron('H 4 * * 1-5')
-        cron('H 3 * * 1-5')       
     }
     environment {
         value = "random123"
