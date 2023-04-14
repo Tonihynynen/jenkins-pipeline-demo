@@ -45,7 +45,7 @@ pipeline {
             parallel {
                 stage('Analyze Files'){
                     steps{
-                        sh 'echo Step 1'
+                        sh '~/.local/bin/robocop'
                     }
                 }
                 stage ('Code'){
