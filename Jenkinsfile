@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('List files') {
             steps {
-                echo 'Hello World'
+                sh 'ls -la'
             }
         }
     }
