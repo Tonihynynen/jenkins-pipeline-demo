@@ -22,8 +22,10 @@ pipeline {
                 }
                 sh 'echo Testing:${name}'
                 sh 'echo Testing:${robot}'
-                if (name == "val"){
-                    sh 'echo True'
+                script {
+                    if (name == "val"){
+                        sh 'echo True'
+                    }
                 }
             }
         }
