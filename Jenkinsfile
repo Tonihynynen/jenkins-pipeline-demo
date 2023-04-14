@@ -17,13 +17,13 @@ pipeline {
             steps {
                 dir('Tests'){
                 }
-                sh 'echo Testing:${params.name}'
-                sh 'echo Testing:${params.robot}'
+                sh 'echo Testing:${name}'
+                sh 'echo Testing:${robot}'
             }
         }
         stage('Robot'){
             steps{
-                sh 'python3 -m robot -d Results -v id:${params.name} Tests/example.robot'
+                sh 'python3 -m robot -d Results -v id:${name} Tests/example.robot'
             }
         }
     }
