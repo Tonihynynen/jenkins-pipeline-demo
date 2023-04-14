@@ -8,24 +8,20 @@ pipeline {
     environment {
         value = "random123"
     }
+    parameters {
+        string defaultValue: 'testing1', description: 'value1', name: 'name'
+    }
     stages {
         stage('CodeAnalysis') {
             steps {
-                sh 'echo $PATH'
                 dir('Tests'){
-                    sh 'pwd'
-                    sh 'ls -la'
                 }
                 sh 'echo Testing:${value}'
-                catchError{
-                    sh 'echo ${val}'
-                    //sh '~/.local/bin/robocop'
-                }
             }
         }
         stage('Robot'){
             steps{
-                sh 'python3 -m robot -d Results -v id:${value} Tests/example.robot'
+                sh 'python3 -m robot -d Results -v id:${name} Tests/example.robot'
             }
         }
     }
