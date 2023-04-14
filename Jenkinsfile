@@ -57,4 +57,9 @@ pipeline {
             }
         }
     }
+    post{
+        always {
+            robot archiveDirName: 'robot-plugin', outputPath: 'Results', overwriteXAxisLabel: '', passThreshold: 100.0, unstableThreshold: 100.0
+        }
+    }
 }
