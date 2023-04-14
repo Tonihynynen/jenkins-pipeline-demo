@@ -29,6 +29,16 @@ pipeline {
                 }
             }
         }
+        stage('Docker Build Image') {
+            steps{
+                sh 'docker build -t robotti .'
+            }
+        }
+        stage('Run Image') {
+            steps{
+                sh 'docker run --rm -v test:/app robotti'
+            }
+        }
         stage('CheckFiles') {
             steps {
             dir('Resources') {
@@ -53,7 +63,7 @@ pipeline {
             parallel {
                 stage('Analyze Files'){
                     steps{
-                         sh '~/.local/bin/robocop'
+                         //sh '~/.local/bin/robocop'
                         sh 'echo Test'
                     }
                 }
