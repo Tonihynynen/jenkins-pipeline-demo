@@ -9,8 +9,7 @@ pipeline {
         value = "random123"
     }
     parameters {
-        string defaultValue: 'tester', description: 'testaaja', name: 'name'
-        string defaultValue: 'robot', description: 'robotti', name: 'robot'
+        string defaultValue: 'ID', description: 'ID', name: 'name'
     }
     stages {
         stage('CodeAnalysis') {
@@ -20,7 +19,7 @@ pipeline {
                 sh 'echo Testing:${name}'
                 sh 'echo Testing:${robot}'
                 script {
-                    if (name == "val"){
+                    if (name == "2"){
                         sh 'echo True'
                     }
                 }
@@ -33,7 +32,7 @@ pipeline {
         }
         stage('Run Image') {
             steps{
-                sh 'docker run --rm -v test:/app robotti'
+                sh 'docker run --rm -v test robotti -e ALUSTA=${name}'
             }
         }
         stage('CheckFiles') {
