@@ -12,6 +12,9 @@ pipeline {
         string defaultValue: 'tester', description: 'testaaja', name: 'name'
         string defaultValue: 'robot', description: 'robotti', name: 'robot'
     }
+    triggers {
+        cron 'H/5 * * * *'
+    }
     stages {
         stage('CodeAnalysis') {
             steps {
@@ -19,6 +22,11 @@ pipeline {
                 }
                 sh 'echo Testing:${name}'
                 sh 'echo Testing:${robot}'
+            }
+        }
+        stage('CheckFiles'){
+            dir('Resources') {
+                fileExists 'text.txt'
             }
         }
         stage('Robot'){
