@@ -33,11 +33,13 @@ pipeline {
             steps {
             dir('Resources') {
                 fileExists 'text.txt'
-                def exist = fileExists 'text.txt'
-                if (exist){
-                    echo 'yes'
-                } else {
-                    echo 'no'
+                script {
+                    if (fileExists('text.txt'))
+                    {
+                        echo "file exists!"
+                    } else {
+                        echo "file does not exist!"
+                    }
                 }
             }
             }
