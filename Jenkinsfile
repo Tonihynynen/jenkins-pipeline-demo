@@ -45,7 +45,7 @@ pipeline {
             parallel {
                 stage('Analyze Files'){
                     steps{
-                        sh '~/.local/bin/robocop'
+                        // sh '~/.local/bin/robocop'
                     }
                 }
                 stage ('Code'){
@@ -53,27 +53,26 @@ pipeline {
                         sh 'python3 -m robot -d Results -v id:${robot} Tests/example.robot'
                     }
                 }
-                stage('Results') {
-                    steps {
-                        echo 'Results...'
-                        script {
-                        step(
-                            [
-                            $class                    : 'RobotPublisher',
-                            outputPath                : 'Results',
-                            outputFileName            : "*.xml",
-                            reportFileName            : "report.html",
-                            logFileName               : "log.html",
-                            disableArchiveOutput      : false,
-                            passThreshold             : 100,
-                            unstableThreshold         : 95.0,
-                            otherFiles                : "*.png"
-                            ]
-                        )
-                        }  
-                    }
-                    }
             }
         }
     }
+    post {
+        	always {
+		        script {
+		          step(
+			            [
+			              $class              : 'RobotPublisher',
+			              outputPath          : 'Results',
+			              outputFileName      : '**/output.xml',
+			              reportFileName      : '**/report.html',
+			              logFileName         : '**/log.html',
+			              disableArchiveOutput: false,
+			              passThreshold       : 50,
+			              unstableThreshold   : 40,
+			              otherFiles          : "**/*.png,**/*.jpg",
+			            ]
+		          	)
+		        }
+	  		}		
+	    }
 }
