@@ -12,7 +12,7 @@ pipeline {
                     sh 'ls -la'
                 }
                 sh 'echo Testing:${value}'
-                // sh '~/.local/bin/robocop'
+                sh '~/.local/bin/robocop'
             }
         }
         stage('Robot'){
