@@ -9,7 +9,7 @@ Day
     ${date}=    Current Date
     Log    ${date}
     Log To Console    ID:${id}
-    Log    testing
+    Log    testing123
 From Jenkins Params
     Log    ${IDENTIFIER}
     Log To Console    Identifier:${IDENTIFIER}
