@@ -29,7 +29,7 @@ pipeline {
                 stage("Run Docker"){
                     steps{
                         sh ''
-                        sh 'docker run --rm -v Results:/app/Results pipeline-2'
+                        sh 'docker run --rm -v /var/lib/jenkins/workspace/pipeline2/Results:/app/Results pipeline-2'
                     }
                 }
             }
