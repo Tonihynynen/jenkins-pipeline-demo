@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    options{
+        timestamps()
+        buildDiscarder(logRotator(numToKeepStr: "10"))
+        timeout(time: 1, unit: "MINUTES")
+    }
+    stages {
+        stage('Build Docker Image For Tests') {
+            steps {
+                sh 'docker build -t pipeline2 -f Dockerfile .'
+            }
+        }
+        stage('List Of Docker Images') {
+            steps {
+                sh 'docker images -a'
+            }
+        }
+        stage('CodeAnalyze And Run Docker'){
+            parallel{
+                stage("Analyze Files"){
+                    steps{
+                        script{
+                            try{
+                                sh ' ~/.local/bin/robocop '
+                            } catch (err){
+                                echo "Handling robocop exit code"
+                            }
+                        }
+                    }
+                }
+                stage("Run Docker"){
+                    steps{
+                        sh 'docker run --rm -v ${WORKSPACE}/Results:/app/Results pipeline2'
+                    }
+                }
+            }
+        }
+        stage("Results"){
+            steps{
+                robot archiveDirName: 'robot-plugin', outputPath: 'Results', overwriteXAxisLabel: '', passThreshold: 100.0, unstableThreshold: 100.0
+            }
+        }
+    }
+}
