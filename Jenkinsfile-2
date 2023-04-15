@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build Docker Image For Tests') {
             steps {
-                sh 'docker build -t pipeline2 -f Dockerfile'
+                sh 'docker build -t pipeline2 -f Dockerfile .'
             }
         }
         stage('List Of Docker Images') {
