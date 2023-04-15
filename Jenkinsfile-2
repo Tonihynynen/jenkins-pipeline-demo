@@ -24,7 +24,7 @@ pipeline {
                             try{
                                 sh ' ~/.local/bin/robocop '
                             } catch (err){
-                                echo "fail"
+                                echo "Handling robocop exit code"
                             }
                         }
                     }
