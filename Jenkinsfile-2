@@ -21,12 +21,10 @@ pipeline {
                 stage("Analyze Files"){
                     steps{
                         script{
-                           catchError{
                             sh '''
                             set +e
                             ~/.local/bin/robocop
                             '''
-                           }  
                         }
                     }
                 }
