@@ -25,7 +25,7 @@ pipeline {
                 }
                 stage("Run Docker"){
                     steps{
-                        sh '${env.WORKSPACE}'
+                        sh '${WORKSPACE}'
                         sh 'docker run --rm -v ${WORKSPACE}/Results:/app/Results pipeline-2'
                     }
                 }
