@@ -11,9 +11,6 @@ RUN pip install --upgrade pip && \
     pip install robotframework && \
     pip install robotframework-robocop
 
-ENV ALUSTA=1
+ENV PLATFORM_ID=1
 
-#RUN sh "python3 -m robot -d Results -v id:$value Tests/example.robot"
-#CMD ["robot", "-d", "Results", "Tests"]
-#CMD ["robot", "-d", "Results", "--variable", "id:${vari}", "Tests"]
-CMD robot -d Results -v id:${ALUSTA} Tests
+CMD robot -d Results -v id:${PLATFORM_ID} Tests/string.robot

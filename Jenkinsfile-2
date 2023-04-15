@@ -6,14 +6,19 @@ pipeline {
         timeout(time: 1, unit: "MINUTES")
     }
     stages {
-        stage('Build Docker Image For Tests') {
+        stage('Remove Old Docker Image') {
             steps {
-                sh 'docker build -t pipeline2 -f Dockerfile .'
+                sh 'docker image rm pipeline2'
             }
         }
         stage('List Of Docker Images') {
             steps {
                 sh 'docker images -a'
+            }
+        }        
+        stage('Build Docker Image For Tests') {
+            steps {
+                sh 'docker build -t pipeline2 -f Dockerfile .'
             }
         }
         stage('CodeAnalyze And Run Docker'){
