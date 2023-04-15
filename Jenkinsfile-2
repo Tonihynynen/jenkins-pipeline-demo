@@ -28,7 +28,7 @@ pipeline {
                 }
                 stage("Run Docker"){
                     steps{
-                        sh 'docker run --rm pipeline-2-${env}'
+                        sh 'docker run --rm -v ${pwd}/Results pipeline-2-${env}'
                     }
                 }
             }
