@@ -19,16 +19,17 @@ pipeline {
                 sh 'docker images'
             }
         }
-        stage('CodeAnalyze And Run Docker')
-        parallel{
-            stage("Analyze Files"){
-                steps{
-                    echo 'Analyzing'
+        stage('CodeAnalyze And Run Docker'){
+            parallel{
+                stage("Analyze Files"){
+                    steps{
+                        echo 'Analyzing'
+                    }
                 }
-            }
-            stage("Run Docker"){
-                steps{
-                    sh 'docker run --rm pipeline-2-${env}'
+                stage("Run Docker"){
+                    steps{
+                        sh 'docker run --rm pipeline-2-${env}'
+                    }
                 }
             }
         }
