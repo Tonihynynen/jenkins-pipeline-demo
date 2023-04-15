@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build Docker Image For Tests') {
             steps {
-                sh 'docker build --rm -t pipeline-2-${env} .'
+                sh 'docker build --rm -t pipeline-2 .'
             }
         }
         stage('List Of Docker Images') {
@@ -28,7 +28,7 @@ pipeline {
                 }
                 stage("Run Docker"){
                     steps{
-                        sh 'docker run --rm -v ${pwd}/Results pipeline-2-${env}'
+                        sh 'docker run --rm -v ${pwd}/Results pipeline-2'
                     }
                 }
             }
