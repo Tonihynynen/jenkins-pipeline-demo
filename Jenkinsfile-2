@@ -21,7 +21,7 @@ pipeline {
                 stage("Analyze Files"){
                     steps{
                         script{
-                           try{
+                           catchError{
                             sh '~/.local/bin/robocop'
                            }  
                         }
