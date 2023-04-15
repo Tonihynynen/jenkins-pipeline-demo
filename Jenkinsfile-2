@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build Docker Image For Tests') {
             steps {
-                sh 'docker build -t pipeline-2-${env} .'
+                sh 'docker build --rm -t pipeline-2-${env} .'
             }
         }
         stage('List Of Docker Images') {
