@@ -3,7 +3,7 @@ pipeline {
     options{
         timestamps()
         buildDiscarder(logRotator(numToKeepStr: "10"))
-        timeout(time: 1, unit: "MINUTES")
+        timeout(time: 5, unit: "MINUTES")
     }
     stages {
         stage('Build Docker Image For Tests') {
