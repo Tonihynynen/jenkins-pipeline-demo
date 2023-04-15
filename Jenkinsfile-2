@@ -28,7 +28,7 @@ pipeline {
                 }
                 stage("Run Docker"){
                     steps{
-                        sh ''
+                        sh '${env.WORKSPACE}'
                         sh 'docker run --rm -v /var/lib/jenkins/workspace/pipeline2/Results:/app/Results pipeline-2'
                     }
                 }
