@@ -22,8 +22,7 @@ pipeline {
                     steps{
                         script{
                             sh '''
-                            set +e
-                            ~/.local/bin/robocop
+                            $CMD || ~/.local/bin/robocop
                             '''
                         }
                     }
