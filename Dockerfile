@@ -13,4 +13,4 @@ RUN pip install --upgrade pip && \
 
 ENV PLATFORM_ID=1
 
-CMD robot -d Results -v id:${PLATFORM_ID} Tests/string.robot
+CMD robot -d Results -v PLATFORM_ID:${PLATFORM_ID} Tests/string.robot
