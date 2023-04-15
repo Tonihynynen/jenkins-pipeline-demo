@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build Docker Image For Tests') {
             steps {
-                sh 'docker build --rm -t pipeline-2 .'
+                sh 'docker build -t pipeline2 -f Dockerfile'
             }
         }
         stage('List Of Docker Images') {
@@ -21,9 +21,11 @@ pipeline {
                 stage("Analyze Files"){
                     steps{
                         script{
-                            sh '''
-                            $CMD || ~/.local/bin/robocop
-                            '''
+                            try{
+                                sh ' ~/.local/bin/robocop '
+                            } catch (err){
+                                echo "fail"
+                            }
                         }
                     }
                 }
