@@ -16,6 +16,11 @@ pipeline {
                 sh 'docker images'
             }
         }
+        stage('Prune Of Docker Images') {
+            steps {
+                sh 'docker images prune'
+            }
+        }
         stage('CodeAnalyze And Run Docker'){
             parallel{
                 stage("Analyze Files"){
