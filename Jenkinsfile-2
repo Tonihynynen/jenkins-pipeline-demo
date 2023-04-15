@@ -20,12 +20,11 @@ pipeline {
             parallel{
                 stage("Analyze Files"){
                     steps{
-                        echo 'Analyzing'
+                        robocopy()
                     }
                 }
                 stage("Run Docker"){
                     steps{
-                        //sh '${WORKSPACE}'
                         sh 'docker run --rm -v ${WORKSPACE}/Results:/app/Results pipeline-2'
                     }
                 }
@@ -38,3 +37,13 @@ pipeline {
         }
     }
 }
+    def robocopy(cmd)
+    {
+        // robocopy uses non-zero exit code even on success, status below 3 is fine
+        def status = bat returnStatus: true, script: "ROBOCOPY ${cmd}"
+        println "ROBOCOPY returned ${status}"
+        if (status < 0 || status > 3)
+        {
+            error("ROBOCOPY failed")
+        }
+    }
