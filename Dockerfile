@@ -5,6 +5,7 @@ WORKDIR /app
 COPY Libraries /app/Libraries
 COPY Resources /app/Resources
 COPY Tests /app/Tests
+COPY Results /app/Results
 
 RUN pip install --upgrade pip && \
     pip install robotframework && \
