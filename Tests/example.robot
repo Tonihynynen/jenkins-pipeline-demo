@@ -8,7 +8,7 @@ ${IDENTIFIER}        null
 Day
     ${date}=    Current Date
     Log    ${date}
-    Log To Console    ${id}
+    Log To Console    ID:${id}
 From Jenkins Params
     Log    ${IDENTIFIER}
-    Fail
+    Log To Console    Identifier:${IDENTIFIER}
