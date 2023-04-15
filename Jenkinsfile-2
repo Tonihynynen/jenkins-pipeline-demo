@@ -28,7 +28,7 @@ pipeline {
                 }
                 stage("Run Docker"){
                     steps{
-                        sh 'docker run --rm -v ${pwd}/Results pipeline-2'
+                        sh 'docker run --rm -v ${pwd}/Results:/app/Results pipeline-2'
                     }
                 }
             }
