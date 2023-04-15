@@ -39,7 +39,7 @@ pipeline {
                 }
                 stage("Run Docker"){
                     steps{
-                        sh 'docker run --rm -v ${WORKSPACE}/Results:/app/Results -e PLATFORM_ID={PLATFORM} pipeline2'
+                        sh 'docker run --rm -v ${WORKSPACE}/Results:/app/Results -e PLATFORM_ID=${PLATFORM} pipeline2'
                     }
                 }
             }
