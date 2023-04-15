@@ -5,6 +5,9 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: "10"))
         timeout(time: 1, unit: "MINUTES")
     }
+    parameters {
+        string defaultValue: '2', description: 'Enter some integer', name: 'PLATFORM'
+    }
     stages {
         stage('Remove Old Docker Image') {
             steps {
@@ -36,7 +39,7 @@ pipeline {
                 }
                 stage("Run Docker"){
                     steps{
-                        sh 'docker run --rm -v ${WORKSPACE}/Results:/app/Results pipeline2'
+                        sh 'docker run --rm -v ${WORKSPACE}/Results:/app/Results -e PLATFORM_ID={PLATFORM} pipeline2'
                     }
                 }
             }
