@@ -5,9 +5,6 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: "10"))
         timeout(time: 1, unit: "MINUTES")
     }
-    environment {
-        env="dev"
-    }
     stages {
         stage('Build Docker Image For Tests') {
             steps {
@@ -29,7 +26,7 @@ pipeline {
                 stage("Run Docker"){
                     steps{
                         sh '${env.WORKSPACE}'
-                        sh 'docker run --rm -v /var/lib/jenkins/workspace/pipeline2/Results:/app/Results pipeline-2'
+                        sh 'docker run --rm -v ${env.WORKSPACE}/Results:/app/Results pipeline-2'
                     }
                 }
             }
