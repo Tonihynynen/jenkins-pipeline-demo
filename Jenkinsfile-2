@@ -5,15 +5,23 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: "10"))
         timeout(time: 5, unit: "MINUTES")
     }
+    parameters {
+        string defaultValue: '2', description: 'Enter some integer', name: 'PLATFORM'
+    }
     stages {
-        stage('Build Docker Image For Tests') {
+        stage('Remove Old Docker Image') {
             steps {
-                sh 'docker build -t pipeline2 -f Dockerfile .'
+                sh 'docker image rm pipeline2'
             }
         }
         stage('List Of Docker Images') {
             steps {
                 sh 'docker images -a'
+            }
+        }        
+        stage('Build Docker Image For Tests') {
+            steps {
+                sh 'docker build -t pipeline2 -f Dockerfile .'
             }
         }
         stage('CodeAnalyze And Run Docker'){
@@ -31,7 +39,7 @@ pipeline {
                 }
                 stage("Run Docker"){
                     steps{
-                        sh 'docker run --rm -v ${WORKSPACE}/Results:/app/Results pipeline2'
+                        sh 'docker run --rm -v ${WORKSPACE}/Results:/app/Results -e PLATFORM_ID=${PLATFORM} pipeline2'
                     }
                 }
             }
